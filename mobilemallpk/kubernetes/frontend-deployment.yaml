@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-php-web
+spec:
+  selector:
+    matchLabels:
+      app: frontend-php-web
+  template:
+    metadata:
+      labels:
+        app: frontend-php-web
+    spec:
+      containers:
+      - name: frontend-php-web
+        image: ranatalha/frontend-php-web:3.1
+        ports:
+        - containerPort: 80  # Adjust the port as needed
+        env:
+        - name: DB_HOST
+          value: "database-service"
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASSWORD
+          value: "root1234"
+        - name: DB_DATABASE
+          value: "mobile_mall"

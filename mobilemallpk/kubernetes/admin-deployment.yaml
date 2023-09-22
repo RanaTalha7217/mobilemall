@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-php-web-deployment
+spec:
+  selector:  
+    matchLabels:
+      app: admin-php-web
+  template:
+    metadata:
+      labels:
+        app: admin-php-web
+    spec:
+      containers:
+      - name: admin-php-web-container
+        image: ranatalha/admin-php-web:3.1
+        ports:
+        - containerPort: 80  # Adjust the port as needed
+        env:
+        - name: DB_HOST
+          value: "talha"
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASSWORD
+          value: "root1234"
+        - name: DB_DATABASE
+          value: "mobile_mall"
